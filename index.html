@@ -38,6 +38,7 @@ function calcola() {
      var hh=(friday?7:8)+Number(time[0]);
      var mm=(friday?50:10)+Number(time[1]);
      if(mm>=60) { hh++; mm-=60; }
+     if(hh>=24) { hh-=24; }
      document.getElementById("exit").innerHTML
          =('Uscita dopo '+(friday?'7:50':'8:10')+' alle <b>'+hh+':'+(mm<10?'0':'')+mm+'</b>');
      var outmsg="<ul>";
@@ -60,7 +61,9 @@ function calcola() {
 		hh1=hh1-hh; mm1=mm1-mm; str='maggior';
         }
         if(mm1<0) { mm1+=60; hh1--; }
-        outmsg+=" - ("+(hh1+':'+(mm1<10?'0':'')+mm1+' di '+str+' presenza)<br/></li>');
+	if(hh1<=1)
+            outmsg+=" - ("+(hh1+':'+(mm1<10?'0':'')+mm1+' di '+str+' presenza)');
+	outmsg+='</li>';
      }
      document.getElementById("navt").innerHTML = outmsg+'</ul>';
 }
