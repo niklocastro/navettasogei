@@ -35,11 +35,11 @@ function calcola() {
     	alert("Orario ingresso previsto tra le 8 e le 9.45");
      }
      var friday=(new Date().getDay()==5);
-	 var hh=(friday?7:8)+Number(time[0]);
-	 var mm=(friday?50:10)+Number(time[1]);
-	 if(mm>=60) { hh++; mm-=60; }
-	 document.getElementById("exit").innerHTML
-         =('Uscita ore <b>'+hh+':'+(mm<10?'0':'')+mm+'</b>');
+     var hh=(friday?7:8)+Number(time[0]);
+     var mm=(friday?50:10)+Number(time[1]);
+     if(mm>=60) { hh++; mm-=60; }
+     document.getElementById("exit").innerHTML
+         =('Uscita dopo '+(friday?'7:50':'8:10')+' alle <b>'+hh+':'+(mm<10?'0':'')+mm+'</b>');
      var outmsg="<ul>";
      var nav=mag;
      if(document.getElementById('nav').selectedIndex==1)
