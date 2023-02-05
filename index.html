@@ -23,11 +23,11 @@
 <div id="navt"></div>
 <script><!-- //
 function calcola() {
-	var mag=[ [16,15],[16,50],[17,20],[17,50],[18,20] ];
-	var ana=[ [16,15],[17,05],[18,15] ];
+    var mag=[ [16,15],[16,50],[17,20],[17,50],[18,20] ];
+    var ana=[ [16,15],[17,05],[18,15] ];
     var time=document.getElementById("appt").value;
-    if(time == null || time == "") {
-	    alert("Impostare orario di ingresso");
+    if(time == null || time == "" || time.length != 5 || time.indexOf(':') <= 0) {
+	alert("Impostare orario di ingresso");
         return;
     }
     time=time.split(':');
