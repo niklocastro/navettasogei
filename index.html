@@ -9,13 +9,13 @@
 
 <body>
 <img src="question.png" align="right"
-       onclick="alert('Navetta Sogei ver. 1.0\nultimo aggiornamento 04.02.2023\n\nSimula l\'orario di uscita del personale\nnormalista di Sogei S.p.A.\nvisualizza gli orari delle navette in uscita\ncalcolando la minore\/maggior presenza');"/>
+       onclick="alert('Navetta Sogei ver. 1.0 (04.02.2023)\n\nCalcola l\'orario di uscita del personale\nnormalista Sogei, mostra gli orari navette\nin uscita calcolando la minor\/maggior presenza\n\nSviluppato da niklocastro\@gmail.com');"/>
 <br/><br/>
 <label for="appt">Ingresso ore </label>
 <input type="time" id="appt" name="appt"
        min="08:00" max="09:45" onchange="calcola()">
 <br/><br/>
-Uscita ore <b id="exit"></b>
+<p id="exit">&nbsp;</p>
 <br/><br/>
 <label for="nav">Navette per </label>
 <select id="nav" name="nav" onchange="calcola()">
@@ -40,7 +40,7 @@ function calcola() {
 	 var mm=(friday?50:10)+Number(time[1]);
 	 if(mm>=60) { hh++; mm-=60; }
 	 document.getElementById("exit").innerHTML
-         =(hh+':'+(mm<10?'0':'')+mm);
+         =('Uscita ore <b>'+hh+':'+(mm<10?'0':'')+mm+'</b>');
      var outmsg="<ul>";
      var nav=mag;
      if(document.getElementById('nav').selectedIndex==1)
@@ -61,10 +61,9 @@ function calcola() {
          	hh1=hh1-hh; mm1=mm1-mm; str='maggior';
          }
          if(mm1<0) { mm1+=60; hh1--; }
-         outmsg+=" - ("+(hh1+':'+(mm1<10?'0':'')+mm1+' di '+str+' presenza)</li>');
+         outmsg+=" - ("+(hh1+':'+(mm1<10?'0':'')+mm1+' di '+str+' presenza)<br/></li>');
         }
-        document.getElementById("navt").innerHTML =
-            outmsg+'</ul>';
+        document.getElementById("navt").innerHTML = outmsg+'</ul>';
 }
 </script>
 </body></html>
