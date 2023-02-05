@@ -12,25 +12,24 @@
        onclick="alert('Navetta Sogei ver. 1.0 (04.02.2023)\n\nCalcola l\'orario di uscita del personale\nnormalista Sogei, mostra gli orari navette\nin uscita calcolando la minor\/maggior presenza\n\nSviluppato da niklocastro\@gmail.com');"/>
 <br/><br/>
 <label for="appt">Ingresso ore </label>
-<input type="time" id="appt" name="appt"
-       min="08:00" max="09:45" onchange="calcola()">
-<br/><br/>
+<input type="time" id="appt" name="appt" min="08:00" max="09:45" onchange="calcola()"><br/>
+<br/>
 <p id="exit">&nbsp;</p>
-<br/><br/>
+<br/>
 <label for="nav">Navette per </label>
 <select id="nav" name="nav" onchange="calcola()">
      <option>Magliana</option>
-     <option>Anagnina</option></select>
-<br/><br/>
+     <option>Anagnina</option></select><br/>
 <div id="navt"></div>
-<script>
-
+<script><!-- //
 function calcola() {
 	var mag=[ [16,15],[16,50],[17,20],[17,50],[18,20] ];
 	var ana=[ [16,15],[17,05],[18,15] ];
     var time=document.getElementById("appt").value;
-    if(time == null || time == "")
-        exit;
+    if(time == null || time == "") {
+	    alert("Impostare orario di ingresso");
+        return;
+    }
     time=time.split(':');
     if(Number(time[0])<8 || Number(time[0]+time[1])>945 ){
     	alert("Orario ingresso previsto tra le 8 e le 9.45");
@@ -47,23 +46,23 @@ function calcola() {
         nav=ana;
      for(var i=0; i < nav.length ; i++) {
      	var hh1=nav[i][0] ;
-         var mm1=nav[i][1];
+        var mm1=nav[i][1];
      	if(friday) {
      	    mm1-=20;
-             if(mm1<0) { mm1+=60; hh1--; }             
+            if(mm1<0) { mm1+=60; hh1--; }             
      	}
-         outmsg+=("<li><b>"+hh1+":"+(mm1<10?'0':'')+mm1+"</b>")+"&nbsp;";
+        outmsg+=("<li><b>"+hh1+":"+(mm1<10?'0':'')+mm1+"</b>")+"&nbsp;";
          
-         var str;
+        var str;
      	if((hh*100+mm)>(hh1*100+mm1)) {
-     	    hh1=hh-hh1; mm1=mm-mm1; str='minor';
-         }else{
-         	hh1=hh1-hh; mm1=mm1-mm; str='maggior';
-         }
-         if(mm1<0) { mm1+=60; hh1--; }
-         outmsg+=" - ("+(hh1+':'+(mm1<10?'0':'')+mm1+' di '+str+' presenza)<br/></li>');
+		hh1=hh-hh1; mm1=mm-mm1; str='minor';
+        }else{
+		hh1=hh1-hh; mm1=mm1-mm; str='maggior';
         }
-        document.getElementById("navt").innerHTML = outmsg+'</ul>';
+        if(mm1<0) { mm1+=60; hh1--; }
+        outmsg+=" - ("+(hh1+':'+(mm1<10?'0':'')+mm1+' di '+str+' presenza)<br/></li>');
+     }
+     document.getElementById("navt").innerHTML = outmsg+'</ul>';
 }
-</script>
+// --></script>
 </body></html>
