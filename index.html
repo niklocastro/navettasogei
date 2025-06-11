@@ -19,12 +19,18 @@
 <label for="nav">Navette per </label>
 <select id="nav" name="nav" onchange="calcola()">
      <option>Magliana</option>
-     <option>Anagnina</option></select><br/>
+     <option>Anagnina</option>
+     <option>Santa Palomba</option></select><br/>
 <div id="navt"></div>
 <script><!-- //
 function calcola() {
+	/*
     var mag=[ [16,15],[16,50],[17,20],[17,50],[18,20] ];
     var ana=[ [16,15],[17,05],[18,15] ];
+    */
+    var mag=[ [16,15],[16,55],[17,35] ]; //Magliana
+    var ana=[ [16,15] ]; //Anagnina
+    var pal=[ [16,15] ]; //Santa Palomba
     var time=document.getElementById("appt").value;
     if(time == null || time == "" || time.length != 5 || time.indexOf(':') <= 0) {
 	alert("Impostare orario di ingresso");
@@ -45,6 +51,8 @@ function calcola() {
      var nav=mag;
      if(document.getElementById('nav').selectedIndex==1)
         nav=ana;
+     if(document.getElementById('nav').selectedIndex==2)
+        nav=pal;
      for(var i=0; i < nav.length ; i++) {
      	var hh1=nav[i][0] ;
         var mm1=nav[i][1];
