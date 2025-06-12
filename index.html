@@ -2,6 +2,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+    window.onerror = function(){
+        return true;
+    }
+    try {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js').then(function(reg) {
+                console.log('Service Worker registrato', reg);
+            }).catch(function(err) {
+                console.log('Errore nel Service Worker', err);
+            });
+        }
+    } catch (error) {
+        //console.error(error);
+    }
+</script>
+<link rel="manifest" href="manifest.webmanifest">
 <meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
 <title>Calcolo orario di lavoro normalisti e navette</title>
