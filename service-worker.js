@@ -1,10 +1,10 @@
 const CACHE_NAME = "miosito-cache-v1";
 const OFFLINE_URLS = [
-  "/",
-  "/index.html",
-  "/question.png",
-  "/bus-icon-192.png",
-  "/bus-icon-512.png"
+  "/navettasogei/",
+  "/navettasogei/index.html",
+  "/navettasogei/question.png",
+  "/navettasogei/bus-icon-192.png",
+  "/navettasogei/bus-icon-512.png"
 ];
 
 self.addEventListener("install", event => {
