@@ -3,20 +3,16 @@
 <html>
 <head>
 <script>
-    window.onerror = function(){
-        return true;
-    }
-    try {
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js').then(function(reg) {
-                console.log('Service Worker registrato', reg);
-            }).catch(function(err) {
-                console.log('Errore nel Service Worker', err);
-            });
-        }
-    } catch (error) {
-        //console.error(error);
-    }
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(function (registration) {
+          console.log('Service Worker registrato con scope:', registration.scope);
+        }, function (err) {
+          console.log('Registrazione fallita:', err);
+        });
+    });
+  }
 </script>
 <link rel="manifest" href="manifest.webmanifest">
 <meta charset='UTF-8'/>
@@ -50,7 +46,7 @@ function calcola() {
     var pal=[ [16,15] ]; //Santa Palomba
     var time=document.getElementById("appt").value;
     if(time == null || time == "" || time.length != 5 || time.indexOf(':') <= 0) {
-	alert("Impostare orario di ingresso");
+	    alert("Impostare orario di ingresso");
         return;
     }
     time=time.split(':');
@@ -86,9 +82,9 @@ function calcola() {
 		hh1=hh1-hh; mm1=mm1-mm; str='maggior';
         }
         if(mm1<0) { mm1+=60; hh1--; }
-	if(hh1<=1)
+	    if(hh1<=1)
             outmsg+=" - ("+(hh1+':'+(mm1<10?'0':'')+mm1+' di '+str+' presenza)');
-	outmsg+='</li>';
+	    outmsg+='</li>';
      }
      document.getElementById("navt").innerHTML = outmsg+'</ul>';
 }
