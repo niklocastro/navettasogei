@@ -17,5 +17,9 @@
       "type": "image/png"
     }
   ],
-  "description": "Navetta Sogei ver. 1.1 (12.06.2025) Calcola l'orario di uscita del personale normalista Sogei, mostra gli orari navette in uscita calcolando la minor/maggior presenza"
+  "description": "Navetta Sogei ver. 1.1 (12.06.2025) Calcola l'orario di uscita del personale normalista Sogei, mostra gli orari navette in uscita calcolando la minor/maggior presenza",
+  "id": "niklocastro.NavSogei",
+  "dir": "ltr",
+  "lang": "it",
+  "prefer_related_applications": false
 }
